@@ -20,9 +20,10 @@ export const patchProfileRoute = async (ctx: Router.IRouterContext) => {
         setResponse(ctx, NOT_FOUND);
         return;
     }
-
     user.profile = { ...user.profile, ...ctx.request.body };
     await user.save();
-
+    if (user.profile.telegram) {
+        // startChat(userId);
+    }
     setResponse(ctx, OK, user.profile);
 };

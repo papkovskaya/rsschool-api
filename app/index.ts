@@ -13,6 +13,7 @@ import { config } from './config';
 import { dbConnectionMiddleware } from './dbConnection';
 import { ILogger, loggerMiddleware } from './logger';
 import { routeLoggerMiddleware, routesMiddleware } from './routes';
+import { startBot } from './telegramNotifications';
 
 const koaSwagger = require('koa2-swagger-ui'); //tslint:disable-line
 
@@ -80,6 +81,7 @@ export class App {
     public start(): Server {
         this.server = this.koa.listen(config.port);
         this.appLogger.info(`Service is running on ${config.port} port`);
+        startBot();
         return this.server;
     }
 

@@ -32,6 +32,7 @@ export interface IUserProfile {
         graduationYear: string;
         faculty: string;
     };
+    // telegram: string;
 }
 
 export interface IUserParticipation {
@@ -77,6 +78,7 @@ export const UserSchema: Schema = new Schema({
             graduationYear: { type: String, default: '' },
             university: { type: String, default: '' },
         },
+        // telegram: String,
     },
     role: { type: String, required: true },
 });
